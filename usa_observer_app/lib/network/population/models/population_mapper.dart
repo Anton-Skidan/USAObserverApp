@@ -7,7 +7,7 @@ class PopulationMapper {
     return data.map((item) {
       return PopulationModel(
         year: int.parse(item['Year'] as String),
-        population: item['Population'] as int,
+        population: item['Population'] as int, nation: '',
       );
     }).toList();
   }
