@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:usa_observer_app/network/population/models/models.dart';
 
 class PopulationApi {
   final http.Client _client;
