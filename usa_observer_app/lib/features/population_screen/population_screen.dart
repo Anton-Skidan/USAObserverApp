@@ -20,6 +20,7 @@ class PopulationScreen extends StatelessWidget {
           }
 
           if (snapshot.hasError) {
+            debugPrint('POPULATION UI ERROR: ${snapshot.error}');
             return Center(
               child: Text(
                 'Error loading data',

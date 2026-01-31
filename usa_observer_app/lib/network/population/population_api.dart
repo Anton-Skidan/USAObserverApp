@@ -8,40 +8,26 @@ class PopulationApi {
 
   PopulationApi(this._client);
 
-  Future<List<PopulationModel>> fetchPopulation() async {
-    final uri = Uri.https(
-      'api.datausa.io',
-      '/api/data',
-      {
-        'drilldowns': 'Nation',
-        'measures': 'Population',
-        'limit': '20',
-      },
-    );
+  Future<Map<String, dynamic>> fetchPopulationRaw() async {
+    final uri = Uri.https('api.datausa.io', '/tesseract/data.jsonrecords', {
+      'cube': 'acs_yg_total_population_5',
+      'measures': 'Population',
+      'include': 'Year:2023',
+      'drilldowns': 'State,Year',
+    });
 
     debugPrint('--- POPULATION REQUEST ---');
     debugPrint('GET $uri');
 
-    final response = await _client.get(
-      uri,
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'USAObserver/1.0 (Flutter)',
-      },
-    ).timeout(const Duration(seconds: 15));
+    final response = await _client.get(uri);
 
     debugPrint('STATUS CODE: ${response.statusCode}');
+    debugPrint('BODY (first 200): ${response.body.substring(0, 200)}');
 
     if (response.statusCode != 200) {
-      debugPrint(response.body);
-      throw Exception('Population request failed');
+      throw Exception('Failed to load population');
     }
 
-    final decoded = jsonDecode(response.body) as Map<String, dynamic>;
-    final data = decoded['data'] as List<dynamic>;
-
-    return data
-        .map((e) => PopulationModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+    return jsonDecode(response.body) as Map<String, dynamic>;
   }
 }

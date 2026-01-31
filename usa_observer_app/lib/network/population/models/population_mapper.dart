@@ -1,13 +1,14 @@
 import 'package:usa_observer_app/network/population/models/population_model.dart';
 
 class PopulationMapper {
-  static List<PopulationModel> fromApi(Map<String, dynamic> json) {
-    final data = json['data'] as List<dynamic>;
+  static List<PopulationModel> fromApi(List<dynamic> json) {
+    return json.map((item) {
+      final map = item as Map<String, dynamic>;
 
-    return data.map((item) {
       return PopulationModel(
-        year: int.parse(item['Year'] as String),
-        population: item['Population'] as int, nation: '',
+        state: map['State'] as String,
+        year: (map['Year'] as num).toInt(),
+        population: (map['Population'] as num).toInt(),
       );
     }).toList();
   }

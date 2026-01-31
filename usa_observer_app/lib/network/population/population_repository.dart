@@ -6,7 +6,10 @@ class PopulationRepository {
 
   PopulationRepository(this._api);
 
-  Future<List<PopulationModel>> getPopulation() {
-    return _api.fetchPopulation();
+  Future<List<PopulationModel>> getPopulation() async {
+    final json = await _api.fetchPopulationRaw();
+
+    final data = json['data'] as List<dynamic>;
+    return PopulationMapper.fromApi(data);
   }
 }
