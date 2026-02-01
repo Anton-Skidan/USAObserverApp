@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/legacy.dart';
-import 'package:usa_observer_app/features/population_screen/population_state.dart';
+import 'package:usa_observer_app/features/population_screen/state_notifier/population_state.dart';
 import 'package:usa_observer_app/network/population/population_network.dart';
 
 class PopulationNotifier extends StateNotifier<PopulationState> {
@@ -14,8 +14,10 @@ class PopulationNotifier extends StateNotifier<PopulationState> {
       state = const PopulationLoading();
       final data = await _repository.getPopulation();
       state = PopulationLoaded(data);
-    } catch (e) {
-      state = PopulationError('Failed to load population');
+    } catch (error) {
+      state = const PopulationError(
+        'Unable to load population data. Please try again later.',
+      );
     }
   }
 

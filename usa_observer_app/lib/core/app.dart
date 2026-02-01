@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:usa_observer_app/main/app_routes.dart';
+import 'package:usa_observer_app/core/app_routes.dart';
 import 'package:usa_observer_app/theme/app_theme.dart';
 
 class UsaObserverApp extends StatelessWidget {

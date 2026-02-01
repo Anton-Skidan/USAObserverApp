@@ -1,6 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:usa_observer_app/main/app_routes.dart';
+import 'package:usa_observer_app/core/app_routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,22 +12,31 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  static const Duration _splashDuration = Duration(seconds: 3);
+  static const Duration splashDuration = Duration(seconds: 3);
+  static const String lottieAssetPath = 'lib/assets/SplashScreenLottie.json';
+
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _navigateNext();
+    _startTimer();
   }
 
-  Future<void> _navigateNext() async {
-    await Future.delayed(_splashDuration);
+  void _startTimer() {
+    _timer = Timer(splashDuration, _navigateNext);
+  }
 
+  void _navigateNext() {
     if (!mounted) return;
 
-    Navigator.of(context).pushReplacementNamed(
-      AppRoutes.main,
-    );
+    Navigator.of(context).pushReplacementNamed(AppRoutes.main);
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -33,11 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SizedBox.expand(
-        child: Lottie.asset(
-          'lib/assets/SplashScreenLottie.json',
-          fit: BoxFit.contain,
-          repeat: true,
-        ),
+        child: Lottie.asset(lottieAssetPath, fit: BoxFit.contain, repeat: true),
       ),
     );
   }

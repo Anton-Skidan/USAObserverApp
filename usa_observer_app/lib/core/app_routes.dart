@@ -11,25 +11,29 @@ class AppRoutes {
   static const String main = '/main';
   static const String category = '/category';
 
-  /// Rotues without arguments
+  /// Routes without arguments
   static Map<String, WidgetBuilder> get routes => {
     splash: (_) => const SplashScreen(),
     main: (_) => const MainScreen(),
   };
 
   /// Routes with arguments
-  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case category:
-        final type = settings.arguments as CategoryType;
+        final arguments = settings.arguments;
+
+        if (arguments is! CategoryType) {
+          return _errorRoute('Некорректные аргументы для маршрута "$category"');
+        }
 
         return MaterialPageRoute(
-          builder: (_) => _buildCategoryScreen(type),
           settings: settings,
+          builder: (_) => _buildCategoryScreen(arguments),
         );
 
       default:
-        return null;
+        return _errorRoute('Маршрут "${settings.name}" не найден');
     }
   }
 
@@ -45,5 +49,11 @@ class AppRoutes {
           body: Center(child: Text('Категория пока не реализована')),
         );
     }
+  }
+
+  static Route<dynamic> _errorRoute(String message) {
+    return MaterialPageRoute(
+      builder: (_) => Scaffold(body: Center(child: Text(message))),
+    );
   }
 }

@@ -9,7 +9,11 @@ class PopulationRepository {
   Future<List<PopulationModel>> getPopulation() async {
     final json = await _api.fetchPopulationRaw();
 
-    final data = json['data'] as List<dynamic>;
+    final data = json['data'];
+    if (data is! List) {
+      throw Exception('Invalid population data format');
+    }
+
     return PopulationMapper.fromApi(data);
   }
 }

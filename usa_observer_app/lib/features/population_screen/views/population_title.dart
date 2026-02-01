@@ -2,49 +2,67 @@ import 'package:flutter/material.dart';
 import 'package:usa_observer_app/network/population/models/models.dart';
 
 class PopulationTile extends StatelessWidget {
-  final PopulationModel model;
-  final bool highlight;
+  static const EdgeInsets _padding = EdgeInsets.symmetric(
+    horizontal: 16,
+    vertical: 12,
+  );
 
   const PopulationTile({
     super.key,
     required this.model,
-    this.highlight = false,
+    this.isHighlighted = false,
   });
+
+  final PopulationModel model;
+  final bool isHighlighted;
 
   @override
   Widget build(BuildContext context) {
-    final populationText = _formatNumber(model.population);
+    final theme = Theme.of(context);
+    final populationText = _formatPopulation(model.population);
 
-    return ListTile(
-      tileColor: highlight
-          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.8)
-          : null,
-      title: Text(
-        model.year.toString(),
-        style: const TextStyle(fontWeight: FontWeight.bold),
-      ),
-      trailing: Text(
-        populationText,
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: highlight ? FontWeight.bold : FontWeight.w500,
+    return Container(
+      padding: _padding,
+      decoration: BoxDecoration(
+        color: isHighlighted
+            ? theme.colorScheme.primary.withValues(alpha: 0.08)
+            : null,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isHighlighted ? theme.colorScheme.primary : theme.dividerColor,
         ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            model.year.toString(),
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            populationText,
+            style: theme.textTheme.bodyLarge?.copyWith(
+              fontWeight: isHighlighted ? FontWeight.bold : FontWeight.w500,
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  String _formatNumber(int value) {
-    final str = value.toString();
+  static String _formatPopulation(int value) {
+    final digits = value.toString().split('').reversed.toList();
     final buffer = StringBuffer();
 
-    for (int i = 0; i < str.length; i++) {
-      final reverseIndex = str.length - i;
-      buffer.write(str[i]);
-      if (reverseIndex > 1 && reverseIndex % 3 == 1) {
+    for (var i = 0; i < digits.length; i++) {
+      if (i != 0 && i % 3 == 0) {
         buffer.write(' ');
       }
+      buffer.write(digits[i]);
     }
 
-    return buffer.toString();
+    return buffer.toString().split('').reversed.join();
   }
 }

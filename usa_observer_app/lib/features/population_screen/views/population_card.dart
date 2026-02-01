@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:usa_observer_app/network/population/models/models.dart';
 
 class PopulationCard extends StatelessWidget {
+  static const double _padding = 16;
+  static const double _borderRadius = 12;
+  static const double _spacingSmall = 4;
+  static const double _spacingMedium = 8;
+
   const PopulationCard({
     super.key,
     required this.model,
@@ -14,27 +19,28 @@ class PopulationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(_padding),
       decoration: BoxDecoration(
         color: highlight
-            ? theme.colorScheme.primary.withValues(alpha: 0.08)
+            ? colorScheme.primary.withOpacity(0.08)
             : theme.cardColor,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(_borderRadius),
         border: Border.all(
-          color: highlight ? theme.colorScheme.primary : theme.dividerColor,
+          color: highlight ? colorScheme.primary : theme.dividerColor,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(model.state, style: theme.textTheme.titleMedium),
-          const SizedBox(height: 4),
+          const SizedBox(height: _spacingSmall),
           Text('Year: ${model.year}', style: theme.textTheme.bodySmall),
-          const SizedBox(height: 8),
+          const SizedBox(height: _spacingMedium),
           Text(
-            _formatNumber(model.population),
+            _formatPopulation(model.population),
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -44,14 +50,14 @@ class PopulationCard extends StatelessWidget {
     );
   }
 
-  String _formatNumber(int value) {
+  static String _formatPopulation(int value) {
+    final digits = value.toString();
     final buffer = StringBuffer();
-    final digits = value.toString().split('');
 
     for (int i = 0; i < digits.length; i++) {
       buffer.write(digits[i]);
-      final positionFromEnd = digits.length - i - 1;
-      if (positionFromEnd % 3 == 0 && positionFromEnd != 0) {
+      final remaining = digits.length - i - 1;
+      if (remaining > 0 && remaining % 3 == 0) {
         buffer.write(',');
       }
     }

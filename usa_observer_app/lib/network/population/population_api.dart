@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class PopulationApi {
@@ -15,16 +14,12 @@ class PopulationApi {
       'drilldowns': 'State,Year',
     });
 
-    debugPrint('--- POPULATION REQUEST ---');
-    debugPrint('GET $uri');
-
     final response = await _client.get(uri);
 
-    debugPrint('STATUS CODE: ${response.statusCode}');
-    debugPrint('BODY (first 200): ${response.body.substring(0, 200)}');
-
     if (response.statusCode != 200) {
-      throw Exception('Failed to load population');
+      throw Exception(
+        'Population request failed with status ${response.statusCode}',
+      );
     }
 
     return jsonDecode(response.body) as Map<String, dynamic>;
