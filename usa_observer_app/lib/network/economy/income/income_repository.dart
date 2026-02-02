@@ -10,11 +10,13 @@ class IncomeRepository {
     final json = await _api.fetchIncomeRaw();
 
     final raw = json['data'];
-    if (raw is! List) return [];
+    if (raw is! List) {
+      throw Exception('Invalid income data format');
+    }
 
     final mapped = IncomeMapper.fromApi(raw);
     if (mapped.isEmpty) {
-      throw Exception('Income data is empty or missing');
+      throw Exception('Household income data is empty');
     }
 
     return mapped;

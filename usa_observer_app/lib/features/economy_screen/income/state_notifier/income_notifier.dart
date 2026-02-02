@@ -15,9 +15,7 @@ class IncomeNotifier extends StateNotifier<IncomeState> {
       final data = await _repository.getIncome();
       state = IncomeLoaded(data);
     } catch (_) {
-      state = const IncomeError(
-        'Failed to load income data',
-      );
+      state = const IncomeError('Failed to load household income data');
     }
   }
 

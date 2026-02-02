@@ -11,16 +11,25 @@ class IncomeScreen extends ConsumerWidget {
     final state = ref.watch(incomeProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Median Income'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Household Income by State'),
+        centerTitle: true,
+      ),
       body: RefreshIndicator(
         onRefresh: () => ref.read(incomeProvider.notifier).refresh(),
         child: switch (state) {
           IncomeLoading() => const Center(child: CircularProgressIndicator()),
 
-          IncomeError(:final errorMessage) => ListView(
+          IncomeError(:final message) => ListView(
             children: [
               const SizedBox(height: 200),
-              Center(child: Text(errorMessage)),
+              Center(
+                child: Text(
+                  message,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ],
           ),
 

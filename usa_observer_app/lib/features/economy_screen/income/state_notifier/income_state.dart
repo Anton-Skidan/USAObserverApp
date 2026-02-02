@@ -10,10 +10,12 @@ class IncomeLoading extends IncomeState {
 
 class IncomeLoaded extends IncomeState {
   final List<IncomeModel> data;
+
   const IncomeLoaded(this.data);
 }
 
 class IncomeError extends IncomeState {
-  final String errorMessage;
-  const IncomeError(this.errorMessage);
+  final String message;
+
+  const IncomeError(this.message);
 }

@@ -5,13 +5,9 @@ import 'package:usa_observer_app/features/economy_screen/income/state_notifier/i
 import 'package:usa_observer_app/network/economy/income/income_api.dart';
 import 'package:usa_observer_app/network/economy/income/income_repository.dart';
 
-final incomeProvider =
-    StateNotifierProvider<IncomeNotifier, IncomeState>(
-  (ref) {
-    return IncomeNotifier(
-      IncomeRepository(
-        IncomeApi(http.Client()),
-      ),
-    );
-  },
-);
+final incomeProvider = StateNotifierProvider<IncomeNotifier, IncomeState>((
+  ref,
+) {
+  final repository = IncomeRepository(IncomeApi(http.Client()));
+  return IncomeNotifier(repository);
+});

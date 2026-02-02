@@ -9,7 +9,7 @@ class IncomeApi {
   Future<Map<String, dynamic>> fetchIncomeRaw() async {
     final uri = Uri.https('api.datausa.io', '/tesseract/data.jsonrecords', {
       'cube': 'acs_yg_household_income_5',
-      'measures': 'Median Household Income',
+      'measures': 'Household Income',
       'include': 'Year:2023',
       'drilldowns': 'State,Year',
     });
@@ -17,7 +17,7 @@ class IncomeApi {
     final response = await _client.get(uri);
 
     if (response.statusCode != 200) {
-      throw Exception('Failed to load income');
+      throw Exception('Failed to load household income data');
     }
 
     return jsonDecode(response.body) as Map<String, dynamic>;
