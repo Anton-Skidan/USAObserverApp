@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:usa_observer_app/features/economy_screen/income/state_notifier/notifier.dart';
-import 'package:usa_observer_app/features/economy_screen/income/views/views.dart';
+import 'package:usa_observer_app/features/income_screen/state_notifier/notifier.dart';
+import 'package:usa_observer_app/features/income_screen/views/views.dart';
 
 class IncomeScreen extends ConsumerWidget {
   const IncomeScreen({super.key});

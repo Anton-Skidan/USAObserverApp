@@ -1,6 +1,6 @@
 enum CategoryType {
   population,
-  economy,
+  income,
   employment,
   industries,
   education,

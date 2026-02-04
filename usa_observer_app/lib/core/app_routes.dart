@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:usa_observer_app/features/economy_screen/income/view.dart';
+import 'package:usa_observer_app/features/employment_screen/view.dart';
+import 'package:usa_observer_app/features/income_screen/view.dart';
 import 'package:usa_observer_app/features/main_screen/models/models.dart';
 import 'package:usa_observer_app/features/main_screen/view.dart';
 import 'package:usa_observer_app/features/population_screen/view.dart';
@@ -42,8 +43,10 @@ class AppRoutes {
     switch (type) {
       case CategoryType.population:
         return const PopulationScreen();
-      case CategoryType.economy:
+      case CategoryType.income:
         return const IncomeScreen();
+      case CategoryType.employment:
+        return const EmploymentScreen();
 
       // TODO: Implement other categories
 

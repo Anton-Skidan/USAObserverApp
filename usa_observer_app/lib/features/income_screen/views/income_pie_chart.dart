@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:usa_observer_app/features/economy_screen/income/views/income_chart_entry.dart';
+import 'package:usa_observer_app/features/income_screen/views/income_chart_entry.dart';
 
 class IncomePieChart extends StatelessWidget {
   const IncomePieChart({super.key, required this.data});

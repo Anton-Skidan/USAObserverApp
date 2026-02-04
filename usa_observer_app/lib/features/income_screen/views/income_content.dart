@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:usa_observer_app/features/economy_screen/income/views/income_chart_entry.dart';
-import 'package:usa_observer_app/features/economy_screen/income/views/income_pie_chart.dart';
+import 'package:usa_observer_app/features/income_screen/views/income_chart_entry.dart';
+import 'package:usa_observer_app/features/income_screen/views/income_pie_chart.dart';
 import 'package:usa_observer_app/network/economy/income/models/models.dart';
 
 class IncomeContent extends StatelessWidget {

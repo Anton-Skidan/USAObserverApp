@@ -10,10 +10,10 @@ class Categories {
       description: 'Population size and demographics',
     ),
     Category(
-      type: CategoryType.economy,
-      title: 'Economy',
+      type: CategoryType.income,
+      title: 'Income',
       emoji: '💰',
-      description: 'GDP, income and economic indicators',
+      description: 'Income indicators',
     ),
     Category(
       type: CategoryType.employment,
