@@ -81,20 +81,20 @@ Flutter Developer
 
 ## Splash Screen
 
-<img width="1170" height="2532" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 53 10" src="https://github.com/user-attachments/assets/6decf5f8-bd77-4c6d-9950-4a5cc3464e86" />
+<img width="600" height="1200" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 53 10" src="https://github.com/user-attachments/assets/6decf5f8-bd77-4c6d-9950-4a5cc3464e86" />
 
 ## Main Screen
 
-<img width="1170" height="2532" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 53 54" src="https://github.com/user-attachments/assets/98cd1d14-d997-4b57-bbe5-2d64664ad2c8" />
+<img width="600" height="1200" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 53 54" src="https://github.com/user-attachments/assets/98cd1d14-d997-4b57-bbe5-2d64664ad2c8" />
 
 Population
 
-<img width="1170" height="2532" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 39 36" src="https://github.com/user-attachments/assets/92ab7127-4403-486f-b459-62ba3b7eb705" />
+<img width="600" height="1200" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 39 36" src="https://github.com/user-attachments/assets/92ab7127-4403-486f-b459-62ba3b7eb705" />
 
 Income
 
-<img width="1170" height="2532" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 39 44" src="https://github.com/user-attachments/assets/0378e02c-e2f3-46a7-850c-23d05b67d762" />
+<img width="600" height="1200" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 39 44" src="https://github.com/user-attachments/assets/0378e02c-e2f3-46a7-850c-23d05b67d762" />
 
 Employment
 
-<img width="1170" height="2532" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 39 48" src="https://github.com/user-attachments/assets/fa0720b0-639c-4cdc-8202-f31e8fe696e1" />
+<img width="600" height="1200" alt="Simulator Screenshot - iPhone 12 - 2026-02-04 at 12 39 48" src="https://github.com/user-attachments/assets/fa0720b0-639c-4cdc-8202-f31e8fe696e1" />
